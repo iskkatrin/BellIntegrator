@@ -17,6 +17,12 @@ public class StubController {
 
     @PostMapping("/auth")
     public AuthResponse postAuth(@RequestBody Map<String, String> requestData) {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+
         String login = requestData.get("login");
         String password = requestData.get("password");
 
