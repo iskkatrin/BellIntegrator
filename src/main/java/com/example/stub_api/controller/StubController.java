@@ -6,11 +6,14 @@ import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
 public class StubController {
+
+    private final List<String> memoryLeak = new ArrayList<>();
 
     @GetMapping("/status")
     public String getStatus() {
@@ -32,5 +35,13 @@ public class StubController {
                 .format(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss"));
 
         return new AuthResponse(login, password, currentTime);
+    }
+
+    @GetMapping("/leak")
+    public String createLeak() {
+        for (int i = 0; i < 100000; i++) {
+            memoryLeak.add("Data " + i);
+        }
+        return "Memory leak";
     }
 }
