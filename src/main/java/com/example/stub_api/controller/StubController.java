@@ -37,7 +37,7 @@ public class StubController {
         return new AuthResponse(login, password, currentTime);
     }
 
-    @GetMapping("/leak")
+    @PostMapping("/leak")
     public String createLeak() {
         for (int i = 0; i < 100000; i++) {
             memoryLeak.add("Data " + i);
