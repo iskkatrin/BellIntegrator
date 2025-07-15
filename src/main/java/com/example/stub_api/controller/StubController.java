@@ -1,20 +1,15 @@
 package com.example.stub_api.controller;
 
 import com.example.stub_api.model.AuthRequest;
-import com.example.stub_api.model.AuthResponse;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api")
 public class StubController {
-
-    private final List<String> memoryLeak = new ArrayList<>();
 
     @GetMapping("/status")
     public ResponseEntity<String> getStatus() {
