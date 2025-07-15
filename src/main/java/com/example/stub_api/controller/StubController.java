@@ -40,4 +40,12 @@ public class StubController {
 
         return ResponseEntity.ok(response);
     }
+
+    @PostMapping("/leak")
+    public ResponseEntity<String> createLeak() {
+        for (int i = 0; i < 100000; i++) {
+            memoryLeak.add("Data " + i);
+        }
+        return ResponseEntity.ok("Memory leak");
+    }
 }
