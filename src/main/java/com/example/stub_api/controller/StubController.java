@@ -1,6 +1,6 @@
 package com.example.stub_api.controller;
 
-import com.example.stub_api.model.Auth;
+import com.example.stub_api.model.User;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,20 +22,20 @@ public class StubController {
     }
 
     @PostMapping("/auth")
-    public ResponseEntity<Auth> postAuth(@Valid @RequestBody Auth authRequest) {
+    public ResponseEntity<User> postAuth(@Valid @RequestBody User userRequest) {
         try {
             Thread.sleep(2000); // 2-секундная задержка
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
 
-        String login = authRequest.getLogin();
-        String password = authRequest.getPassword();
+        String login = userRequest.getLogin();
+        String password = userRequest.getPassword();
 
         String currentTime = LocalDateTime.now()
                 .format(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss"));
 
-        Auth response = new Auth(login, password, currentTime);
+        User response = new User(login, password, currentTime);
 
         return ResponseEntity.ok(response);
     }
