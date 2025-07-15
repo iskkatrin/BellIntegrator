@@ -8,11 +8,13 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AuthRequest {
+public class Auth {
 
     @NotBlank(message = "Поле login не может быть пустым")
     private String login;
 
     @NotBlank(message = "Поле password не может быть пустым")
     private String password;
+
+    private String date;
 }
