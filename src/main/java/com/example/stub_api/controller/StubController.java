@@ -9,7 +9,8 @@ import java.time.format.DateTimeFormatter;
 
 @RestController
 @RequestMapping("/api")
-public class StubController {
+public class
+StubController {
 
     @GetMapping("/status")
     public ResponseEntity<String> getStatus() {
