@@ -3,13 +3,21 @@ package com.example.stub_api.service;
 
 import com.example.stub_api.model.User;
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
+
 import java.sql.*;
 
-@AllArgsConstructor
+@Service
 public class DataBaseWorker {
     private String url;
     private String user;
     private String password;
+
+    public DataBaseWorker() {
+        this.url = "jdbc:postgresql://localhost:5432/testdb";
+        this.user = "user";
+        this.password = "password";
+    }
 
     // select по login (try/catch, Statement)
     public User getUserByLogin(String login) {
