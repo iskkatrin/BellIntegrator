@@ -32,7 +32,7 @@ StubController {
         String currentTime = LocalDateTime.now()
                 .format(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss"));
 
-        User response = new User(login, password, currentTime);
+        User response = new User(login, password, null, currentTime);
 
         return ResponseEntity.ok(response);
     }
