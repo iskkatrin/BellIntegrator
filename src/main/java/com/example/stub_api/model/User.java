@@ -16,5 +16,8 @@ public class User {
     @NotBlank(message = "Поле password не может быть пустым")
     private String password;
 
+    @NotBlank(message = "Поле email не может быть пустым")
+    private String email;
+
     private String date;
 }

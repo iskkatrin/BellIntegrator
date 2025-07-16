@@ -6,14 +6,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-public class StubController {
-
-    private final List<String> memoryLeak = new ArrayList<>();
+public class
+StubController {
 
     @GetMapping("/status")
     public ResponseEntity<String> getStatus() {
@@ -35,16 +32,8 @@ public class StubController {
         String currentTime = LocalDateTime.now()
                 .format(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss"));
 
-        User response = new User(login, password, currentTime);
+        User response = new User(login, password, null, currentTime);
 
         return ResponseEntity.ok(response);
-    }
-
-    @PostMapping("/leak")
-    public ResponseEntity<String> createLeak() {
-        for (int i = 0; i < 100000; i++) {
-            memoryLeak.add("Data " + i);
-        }
-        return ResponseEntity.ok("Memory leak");
     }
 }
